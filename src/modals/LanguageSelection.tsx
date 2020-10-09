@@ -48,14 +48,16 @@ const LanguageSelection: FunctionComponent = () => {
   }
 
   return (
-    <FlatList
-      keyExtractor={(_, i) => `${i}`}
-      data={localeList}
-      renderItem={renderItem}
-      ItemSeparatorComponent={itemSeparatorComponent}
-      ListFooterComponent={itemSeparatorComponent}
-      alwaysBounceVertical={false}
-    />
+    <View style={style.container}>
+      <FlatList
+        keyExtractor={(_, i) => `${i}`}
+        data={localeList}
+        renderItem={renderItem}
+        ItemSeparatorComponent={itemSeparatorComponent}
+        ListFooterComponent={itemSeparatorComponent}
+        alwaysBounceVertical={false}
+      />
+    </View>
   )
 }
 
