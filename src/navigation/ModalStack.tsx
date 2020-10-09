@@ -45,15 +45,19 @@ const HeaderLeftBackButton = () => {
   )
 }
 
-const modalHeader = () => <ModalHeader />
-const ModalHeader = () => {
-  const { t } = useTranslation()
+interface ModalHeaderProps {
+  headerTitle: string
+}
+const modalHeader = ({ headerTitle }: ModalHeaderProps) => (
+  <ModalHeader headerTitle={headerTitle} />
+)
+const ModalHeader: FunctionComponent<ModalHeaderProps> = ({ headerTitle }) => {
   const navigation = useNavigation()
 
   return (
     <View style={style.container}>
       <Text numberOfLines={10} style={style.headerText}>
-        {t("screen_titles.protect_privacy")}
+        {headerTitle}
       </Text>
       <TouchableOpacity
         onPress={navigation.goBack}
@@ -90,12 +94,19 @@ const style = StyleSheet.create({
 const Stack = createStackNavigator()
 
 const ModalStack: FunctionComponent = () => {
+  const { t } = useTranslation()
+
   return (
     <Stack.Navigator headerMode="screen" screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name={ModalStackScreens.LanguageSelection}
         component={LanguageSelection}
-        options={TransitionPresets.ModalTransition}
+        options={{
+          ...TransitionPresets.ModalTransition,
+          headerShown: true,
+          header: () =>
+            modalHeader({ headerTitle: t("screen_titles.select_language") }),
+        }}
       />
       <Stack.Screen
         name={ModalStackScreens.ProtectPrivacy}
@@ -103,7 +114,8 @@ const ModalStack: FunctionComponent = () => {
         options={{
           ...TransitionPresets.ModalTransition,
           headerShown: true,
-          header: modalHeader,
+          header: () =>
+            modalHeader({ headerTitle: t("screen_titles.protect_privacy") }),
         }}
       />
       <Stack.Screen
