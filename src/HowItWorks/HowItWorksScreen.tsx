@@ -13,7 +13,7 @@ import { useNavigation } from "@react-navigation/native"
 import { useTranslation } from "react-i18next"
 import { useSafeAreaInsets, EdgeInsets } from "react-native-safe-area-context"
 import { StatusBar, Text, Button } from "../components"
-import { ModalStackScreens, Stacks, useStatusBarEffect } from "../navigation"
+import { ModalStackScreens, useStatusBarEffect } from "../navigation"
 
 import { Outlines, Colors, Spacing, Typography } from "../styles"
 
@@ -42,9 +42,7 @@ const HowItWorksScreen: FunctionComponent<HowItWorksScreenProps> = ({
   const style = createStyle(insets)
 
   const handleOnPressProtectPrivacy = () => {
-    navigation.navigate(Stacks.Modal, {
-      screen: ModalStackScreens.ProtectPrivacy,
-    })
+    navigation.navigate(ModalStackScreens.ProtectPrivacy)
   }
 
   return (

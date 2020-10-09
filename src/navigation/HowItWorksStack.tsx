@@ -18,7 +18,6 @@ import {
   HowItWorksStackScreens,
   ModalStackScreens,
   Stack as StackType,
-  Stacks,
 } from "../navigation/index"
 import HowItWorksScreen from "../HowItWorks/HowItWorksScreen"
 import { getLocalNames } from "../locales/languages"
@@ -52,9 +51,7 @@ const HowItWorksStack: FunctionComponent<HowItWorksStackProps> = ({
   const languageName = getLocalNames()[localeCode]
 
   const handleOnPressSelectLanguage = () => {
-    navigation.navigate(Stacks.Modal, {
-      screen: ModalStackScreens.LanguageSelection,
-    })
+    navigation.navigate(ModalStackScreens.LanguageSelection)
   }
 
   const handleOnPressSkip = () => {
