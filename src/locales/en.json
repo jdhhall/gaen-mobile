@@ -44,6 +44,7 @@
     "covid_data": "COVID Data",
     "deaths_today": "Deaths today",
     "error_getting_data": "Sorry, we could not fetch the latest COVID cases data for {{location}}.",
+    "apologies_data_unavailable": "Apologies, COVID data is unavailable.",
     "see_more": "See more",
     "total_cases": "Total cases",
     "total_deaths": "Total deaths"
